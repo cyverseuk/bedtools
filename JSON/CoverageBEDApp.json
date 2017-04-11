@@ -55,7 +55,7 @@
           "showArgument": true,
           "argument": "-g "
         }
-      },
+      }
     ],
 
 
@@ -132,9 +132,9 @@
     },
     {"id": "a_overlap",
       "value": {
-        "type": "number",
-        "default": "1E-9",
-        "visible": true
+        "type": "string",
+        "visible": true,
+        "validator": "^((1E-|0+\\.)\\d+)?$"
       },
       "details": {
         "label": "Minimum A overlap",
@@ -145,8 +145,8 @@
     },
     {"id": "b_overlap",
       "value": {
-        "type": "number",
-        "default": "1E-9",
+        "type": "string",
+        "validator": "^((1E-|0+\\.)\\d+)?$",
         "visible": true
       },
       "details": {
