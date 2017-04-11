@@ -44,6 +44,18 @@
     "semantics": {
       "maxCardinality": -1
       }},
+      {"id": "genome",
+        "value": {
+          "required": false,
+          "default": ""
+        },
+        "details": {
+          "label": "Genome ch order",
+          "description": "Provide a genome file to enforce consistent chromosome sort order across input files. Only applies when used with -sorted option.",
+          "showArgument": true,
+          "argument": "-g "
+        }
+      },
     ],
 
 
@@ -178,18 +190,6 @@
         "description": "Treat split BAM or BED12 entries as distinct BED intervals.",
         "showArgument": true,
         "argument": "-split "
-      }
-    },
-    {"id": "genome",
-      "value": {
-        "type": "flag",
-        "visible": true
-      },
-      "details": {
-        "label": "Genome ch order",
-        "description": "Provide a genome file to enforce consistent chromosome sort order across input files. Only applies when used with -sorted option.",
-        "showArgument": true,
-        "argument": "-g "
       }
     },
     {"id": "nonamecheck",
