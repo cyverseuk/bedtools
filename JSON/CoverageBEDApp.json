@@ -1,0 +1,244 @@
+{
+  "name": "coverageBED_2.25.0",
+  "label": "coverageBED",
+  "shortDescription": "bed tools coverage",
+  "longDescription": "The bedtools coverage tool computes both the depth and breadth of coverage of features in file B on the features in file A. For example, bedtools coverage can compute the coverage of sequence alignments (file B) across 1 kilobase (arbitrary) windows (file A) tiling a genome of interest. One advantage that bedtools coverage offers is that it not only counts the number of features that overlap an interval in file A, it also computes the fraction of bases in the interval in A that were overlapped by one or more features. Thus, bedtools coverage also computes the breadth of coverage observed for each interval in A.",
+  "helpURI": "http://bedtools.readthedocs.io/en/stable/content/tools/coverage.html?highlight=coverage",
+  "datePublished": "",
+  "author":"Alice Minotto",
+  "version": "0.0.0",
+  "deploymentSystem": "cyverseUK-Storage2",
+  "deploymentPath": "/mnt/data/apps/bedtools",
+  "executionSystem": "cyverseUK-Batch2",
+  "executionType": "CLI",
+  "parallelism": "SERIAL",
+  "templatePath": "wrapper.sh",
+  "testPath": "test.sh",
+  "ontology": [ "http://edamontology.org/operation_0292",
+  "http://edamontology.org/operation_0259",
+  "http://edamontology.org/topic_0080"],
+  "tags": [ "CyverseUK" ],
+  "inputs": [
+    {"id": "a_File",
+    "value": {
+      "required": true,
+      "default": ""
+    },
+    "details": { "label": "BAM/BED/GFF/VCF file A",
+      "description": "Each feature in A is compared to B in search of overlaps.",
+      "showArgument": true,
+      "argument": "-a "
+    },
+    "semantics": {
+      "maxCardinality": 1
+    }},
+    {"id": "b_file",
+    "value": {
+      "required": true,
+      "default": ""
+      },
+    "details": { "label": "One or more BAM/BED/GFF/VCF file(s) B",
+      "showArgument": true,
+      "argument": "--pFile "
+    },
+    "semantics": {
+      "maxCardinality": -1
+      }},
+    ],
+
+
+  "parameters": [
+    {"id": "hist",
+    "value": {
+      "type": "flag",
+      "visible": true
+    },
+    "details": {
+      "label" : "Histogram",
+      "description":"Report a histogram of coverage for each feature in A as well as a summary histogram for _all_ features in A.Output (tab delimited) after each feature in A: 1) depth, 2) # bases at depth, 3) size of A, 4) % of A at depth",
+      "showArgument": true,
+      "argument": "-hist "
+      }},
+    {"id": "depth",
+    "value": {
+      "type": "flag",
+      "visible": true
+      },
+    "details": {
+      "label": "Report depth",
+      "description": "Report the depth at each position in each A feature. Positions reported are one based. Each position and depth follow the complete A feature.",
+      "showArgument": true,
+      "argument": "-d "
+      }},
+    {"id": "counts",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Counts",
+        "description": "Only report the count of overlaps, don't compute fraction, etc.",
+        "showArgument": true,
+        "argument": "-counts "
+      }
+    },
+    {"id": "mean",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Mean",
+        "description": "Report the mean depth of all positions in each A feature.",
+        "showArgument": true,
+        "argument": "-mean "
+      }
+    },
+    {"id": "same_strand",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Require same strandness",
+        "description": "That is, only report hits in B that overlap A on the _same_ strand. False by default.",
+        "showArgument": true,
+        "argument": "-s "
+      }
+    },
+    {"id": "diff_strand",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Require different strandness",
+        "description": "That is, only report hits in B that overlap A on the _opposite_ strand. False by default.",
+        "showArgument": true,
+        "argument": "-S "
+      }
+    },
+    {"id": "a_overlap",
+      "value": {
+        "type": "number",
+        "default": "1E-9",
+        "visible": true
+      },
+      "details": {
+        "label": "Minimum A overlap",
+        "description": "Minimum overlap required as a fraction of A. Default is 1E-9 (i.e., 1bp). FLOAT (e.g. 0.50)",
+        "showArgument": true,
+        "argument": "-f "
+      }
+    },
+    {"id": "b_overlap",
+      "value": {
+        "type": "number",
+        "default": "1E-9",
+        "visible": true
+      },
+      "details": {
+        "label": "Minimum B overlap",
+        "description": "Minimum overlap required as a fraction of B. Default is 1E-9 (i.e., 1bp). FLOAT (e.g. 0.50)",
+        "showArgument": true,
+        "argument": "-F "
+      }
+    },
+    {"id": "r_overlap",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Minimum reciprocal overlap",
+        "description": "Require that the fraction overlap be reciprocal for A AND B. In other words, if -f is 0.90 and -r is used, this requires that B overlap 90% of A and A _also_ overlaps 90% of B.",
+        "showArgument": true,
+        "argument": "-r "
+      }
+    },
+    {"id": "e_overlap",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Minimum overlap of A OR B",
+        "description": "Require that the minimum fraction be satisfied for A OR B. In other words, if -e is used with -f 0.90 and -F 0.10 this requires that either 90% of A is covered OR 10% of  B is covered. Without -e, both fractions would have to be satisfied.",
+        "showArgument": true,
+        "argument": "-e "
+      }
+    },
+    {"id": "split",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Split",
+        "description": "Treat split BAM or BED12 entries as distinct BED intervals.",
+        "showArgument": true,
+        "argument": "-split "
+      }
+    },
+    {"id": "genome",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Genome ch order",
+        "description": "Provide a genome file to enforce consistent chromosome sort order across input files. Only applies when used with -sorted option.",
+        "showArgument": true,
+        "argument": "-g "
+      }
+    },
+    {"id": "nonamecheck",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "No name check",
+        "description": "For sorted data, don't throw an error if the file has different naming conventions for the same chromosome. ex. chr1 vs chr01",
+        "showArgument": true,
+        "argument": "-nonamecheck "
+      }
+    },
+    {"id": "sorted",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Sorted",
+        "description": "Use the chromsweep algorithm for sorted (-k1,1 -k2,2n) input.",
+        "showArgument": true,
+        "argument": "-sorted "
+      }
+    },
+    {"id": "bed",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "BED",
+        "description": "If using BAM input, write output as BED.",
+        "showArgument": true,
+        "argument": "-bed "
+      }
+    },
+    {"id": "header",
+      "value": {
+        "type": "flag",
+        "visible": true
+      },
+      "details": {
+        "label": "Header",
+        "description": "Print the header from the A file prior to results.",
+        "showArgument": true,
+        "argument": "-header "
+      }
+    }
+]
+}
