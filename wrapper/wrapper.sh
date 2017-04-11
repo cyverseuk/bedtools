@@ -25,15 +25,6 @@ echo "B file is " "${BFILEU}"
 echo "arguments are "${ARGSU}
 echo "inputs are "${INPUTSU}
 
-INDEXU="${index}"
-FASTA_INDEXU="${fasta_index}"
-IN_NAMEU="${in_name}"
-H5DUMPU="${h5dump}"
-SINGLEU="${single}"
-FRAG_LENU="${frag_len}"
-SDU="${sd}"
-#echo ${output}
-
 
 if [ -n "${r_overlap}" ]
   then
