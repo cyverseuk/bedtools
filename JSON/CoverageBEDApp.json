@@ -12,22 +12,21 @@
   "executionSystem": "cyverseUK-Batch2",
   "executionType": "CLI",
   "parallelism": "SERIAL",
-  "templatePath": "wrapper.sh",
+  "templatePath": "wrapper_coverage.sh",
   "testPath": "test.sh",
   "ontology": [ "http://edamontology.org/operation_0292",
   "http://edamontology.org/operation_0259",
   "http://edamontology.org/topic_0080"],
   "tags": [ "CyverseUK" ],
   "inputs": [
-    {"id": "a_File",
+    {"id": "a_file",
     "value": {
       "required": true,
       "default": ""
     },
     "details": { "label": "BAM/BED/GFF/VCF file A",
       "description": "Each feature in A is compared to B in search of overlaps.",
-      "showArgument": true,
-      "argument": "-a "
+      "showArgument": false
     },
     "semantics": {
       "maxCardinality": 1
@@ -38,8 +37,7 @@
       "default": ""
       },
     "details": { "label": "One or more BAM/BED/GFF/VCF file(s) B",
-      "showArgument": true,
-      "argument": "--pFile "
+      "showArgument": false
     },
     "semantics": {
       "maxCardinality": -1
@@ -52,8 +50,7 @@
         "details": {
           "label": "Genome ch order",
           "description": "Provide a genome file to enforce consistent chromosome sort order across input files. Only applies when used with -sorted option.",
-          "showArgument": true,
-          "argument": "-g "
+          "showArgument": false
         }
       }
     ],

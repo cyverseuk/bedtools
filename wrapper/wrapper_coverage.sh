@@ -47,7 +47,12 @@ if [ -n "${e_overlap}" ]
 fi
 
 CMDLINEARG=""
-CMDLINEARG+="coveragebed ${ARGSU} ${GENOMEU} ${AFILEU} ${BFILEU}"
+CMDLINEARG+="coverageBed ${ARGSU} "
+if [ -n "${genome}" ]
+  then
+    CMDLINEARG+="-g ${GENOMEU} "
+fi
+CMDLINEARG+="-a ${AFILEU} -b ${BFILEU}"
 echo ${CMDLINEARG};
 chmod +x launch.sh
 
