@@ -40,7 +40,7 @@ if [ -n "${e_overlap}" ]
   then
     if [ -z "${a_overlap}" ]
       then
-        >&2 echo "-r must be used with -f"
+        >&2 echo "-e must be used with -f"
         debug
         exit 1;
     fi
