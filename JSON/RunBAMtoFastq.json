@@ -1,0 +1,10 @@
+{
+  "name" : "BAM_to_Fastq_2.25.0",
+  "appId" : "BAM_to_Fastq_2.25.0-0.0.0",
+  "archive" : false,
+  "inputs": {
+    "bam_file" :  "agave://cyverseuk-storage2/rosysnake/data_test/sorted_bwa_output.bam"
+  },
+  "parameters" : {
+  }
+}
