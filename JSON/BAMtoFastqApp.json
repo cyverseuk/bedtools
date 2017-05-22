@@ -19,7 +19,7 @@
   "http://edamontology.org/operation_2121",
   "http://edamontology.org/operation_0260",
   "http://edamontology.org/topic_0080",
-  "http://edamontology.org/topic_3308"], 
+  "http://edamontology.org/topic_3308"],
   "tags": [ "CyverseUK" ],
   "inputs": [
     {"id": "bam_file",
@@ -48,6 +48,25 @@
       "label" : "single end or paired end data",
       "description":"If divinding paired end reads BAM should be sorted by query name (samtools sort -n aln.bam aln.qsort) if creating paired FASTQ with this option.",
       "showArgument": false
-      }}
+      }},
+      {"id": "prefix",
+      "value": {
+        "type": "string",
+        "visible": true
+      },
+      "details": {
+        "label" : "Prefix name for FASTQ file",
+        "showArgument": false
+        }},
+        {"id": "tags",
+        "value": {
+          "type": "flag",
+          "visible": true
+        },
+        "details": {
+          "label" : "Create FASTQ based on the mate info in the BAM R2 and Q2 tags.",
+          "showArgument": true,
+          "argument": "-tags "
+          }}
 ]
 }
